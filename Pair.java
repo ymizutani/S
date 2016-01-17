@@ -33,4 +33,20 @@ class Pair extends S {
     public String toString(){
         return "(" + toString_core() + ")";
     }
+
+
+    /** 末尾のドット対を取得する */
+    Pair tailPair(){
+        Pair s = this;
+        while (s.s2.isPair()){
+            s = (Pair)s.s2;
+        }
+        return s;
+    }
+
+    /** 純リストであることを判定する */
+    final public boolean isList(){
+        return tailPair().s2.isNil();
+    }
+
 }
