@@ -12,6 +12,19 @@ class BoolAtom extends Atom {
     final public boolean isT(){ return this.b == true; }
     final public boolean isF(){ return this.b == false; }
 
+    final public boolean equals(S s){ 
+        if (s.isBoolAtom()){
+            BoolAtom batom = (BoolAtom)s;
+            return b == batom.b;
+        }
+        return false;
+    }
+
+    public boolean getValue(){
+        return b;
+    }
+
+
     public String toString(){
         return b ? "#t" : "#f";
     }

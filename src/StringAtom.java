@@ -2,10 +2,10 @@
 * 文字列アトムを表すクラス
 */
 class StringAtom extends Atom {
-    private String s;
+    private String str;
 
     public StringAtom(String s){
-        this.s = s;
+        this.str = s;
     }
 
     public StringAtom(){
@@ -14,7 +14,19 @@ class StringAtom extends Atom {
 
     final public boolean isStringAtom(){ return true; }
 
+    final public boolean equals(S s){ 
+        if (s.isStringAtom()){
+            StringAtom satom = (StringAtom)s;
+            return str.equals(satom.str);
+        }
+        return false;
+    }
+
+    public String getValue(){
+        return str;
+    }
+
     public String toString(){
-        return "\"" + s + "\"";
+        return "\"" + str + "\"";
     }
 }

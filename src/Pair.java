@@ -49,4 +49,13 @@ class Pair extends S {
         return tailPair().s2.isNil();
     }
 
+
+    final public boolean equals(S s){ 
+        if (s.isPair()){
+            Pair p = (Pair)s;
+            return s1.equals(p.s1) && s2.equals(p.s2);
+        }
+        return false;
+    }
+
 }

@@ -4,7 +4,7 @@
 */
 abstract class S {
 
-    //// 判定系メソッド ////////////////////////////////
+    //// 種別判定系メソッド ////////////////////////////////
 
     /** アトムであることを判定する． */
     public boolean isAtom(){ return false; }
@@ -24,13 +24,13 @@ abstract class S {
     /** 文字列アトムであることを判定する． */
     public boolean isStringAtom(){ return false; }
 
-    /** 真偽値アトムであることを判定する． */
+    /** ブールアトムであることを判定する． */
     public boolean isBoolAtom(){ return false; }
 
-    /** trueを表す真偽値アトムであることを判定する． */
+    /** trueを表すブールアトムであることを判定する． */
     public boolean isT(){ return false; }
 
-    /** falseを表す真偽値アトムであることを判定する． */
+    /** falseを表すブールアトムであることを判定する． */
     public boolean isF(){ return false; }
 
     /** nilであることを判定する．*/
@@ -40,6 +40,7 @@ abstract class S {
     public boolean isList(){ return false; };
 
 
+    //// 種別判定系メソッドの否定 ////////////////////////////////
 
     /** アトムでないことを判定する． */
     final public boolean isNotAtom(){ return !isAtom(); }
@@ -53,7 +54,7 @@ abstract class S {
     /** 実数アトムでないことを判定する． */
     final public boolean isNotDoubleAtom(){ return !isDoubleAtom(); }
 
-    /** 真偽値アトムでないことを判定する． */
+    /** ブールアトムでないことを判定する． */
     final public boolean isNotBoolAtom(){ return !isBoolAtom(); }
 
     /** 文字アトムでないことを判定する． */
@@ -65,6 +66,43 @@ abstract class S {
     /** nilであることを判定する．*/
     final public boolean isNotNil(){ return !isNil(); }
 
+    //// 等価判定系メソッド ////////////////////////////////
+    abstract public boolean equals(S s);
+
+
+    //// データ取得 /////////////////////////////////////////////////
+
+    /** 整数アトムが表す整数値を取得する． */
+    public int getIntValue(){
+        if (this.isNotIntAtom()){
+            throw new RuntimeException();
+        }
+        return ((IntAtom)this).getValue();
+    }
+
+    /** 実数アトムが表す整数値を取得する． */
+    public double getDoubleValue(){
+        if (this.isNotDoubleAtom()){
+            throw new RuntimeException();
+        }
+        return ((DoubleAtom)this).getValue();
+    }
+
+    /** 文字列アトムが表す整数値を取得する． */
+    public String getStringValue(){
+        if (this.isNotStringAtom()){
+            throw new RuntimeException();
+        }
+        return ((StringAtom)this).getValue();
+    }
+
+    /** ブールアトムが表す整数値を取得する． */
+    public boolean getBoolValue(){
+        if (this.isNotBoolAtom()){
+            throw new RuntimeException();
+        }
+        return ((BoolAtom)this).getValue();
+    }
 
 
 
@@ -95,7 +133,7 @@ abstract class S {
     static public S nil(){ return nil_instance; }
 
 
-    /** 真偽値アトムのインスタンス */
+    /** ブールアトムのインスタンス */
     static private S t_instance = new BoolAtom(true);
     static private S f_instance = new BoolAtom(false);
 
@@ -109,13 +147,23 @@ abstract class S {
     static public S atom(int i){
         return new IntAtom(i);
     }
+    
+    /** 実数アトムを生成する */
+    static public S atom(double d){
+        return new DoubleAtom(d);
+    }
+    
+    /** 文字列アトムを生成する */
+    static public S atom(String s){
+        return new StringAtom(s);
+    }
 
     /** nilアトムを生成する */
     static public S atom(){
         return nil();
     }
 
-    /** 真偽値アトムを生成する */
+    /** ブールアトムを生成する */
     static public S atom(boolean b){
         return b ? t() : f();
     }
