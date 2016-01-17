@@ -1,4 +1,3 @@
-
 JAVAC   =   javac
 
 CLASSES =   S.class \
