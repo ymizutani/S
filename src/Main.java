@@ -15,7 +15,7 @@ class Main{
         S d = c.cons(c);
         System.out.println("d = " + d.toString());
 
-        S e = d.cons(S.atom(10), d);
+        S e = S.atom(10).cons(d);
         System.out.println("e = " + e);
 
         return;

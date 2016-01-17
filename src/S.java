@@ -169,12 +169,6 @@ abstract class S {
     }
 
 
-    //////////// static method ////////////////////////////
-
-    /** ドット対を返す． */
-    static public S cons(S s1, S s2){
-        return s1.cons(s2);
-    }
 
     /** 文字列に変換する．*/
     abstract public String toString();
