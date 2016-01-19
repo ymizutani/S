@@ -14,7 +14,7 @@ class StringAtom extends Atom {
 
     final public boolean isStringAtom(){ return true; }
 
-    final public boolean equals(S s){ 
+    final public boolean equals(SExpr s){ 
         if (s.isStringAtom()){
             StringAtom satom = (StringAtom)s;
             return str.equals(satom.str);

@@ -14,7 +14,7 @@ class DoubleAtom extends Atom {
 
     final public boolean isDoubleAtom(){ return true; }
 
-    final public boolean equals(S s){ 
+    final public boolean equals(SExpr s){ 
         if (s.isDoubleAtom()){
             return this.d == ((DoubleAtom)s).d;
         }

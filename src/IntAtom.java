@@ -14,7 +14,7 @@ class IntAtom extends Atom {
 
     final public boolean isIntAtom(){ return true; }
 
-    final public boolean equals(S s){
+    final public boolean equals(SExpr s){
         if (s.isIntAtom()){
             return this.i == ((IntAtom)s).i;
         }

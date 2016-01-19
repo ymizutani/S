@@ -1,6 +1,6 @@
 JAVAC   =   javac
 
-CLASSES =   S.class \
+CLASSES =   SExpr.class \
             Atom.class  \
             Pair.class  \
             NilAtom.class  \

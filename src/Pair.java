@@ -1,22 +1,22 @@
 /**
 * ドット対を表すクラス
 */
-class Pair extends S {
-    private S s1;  // car部のS式    
-    private S s2;  // cdr部のS式
+class Pair extends SExpr {
+    private SExpr s1;  // car部のS式    
+    private SExpr s2;  // cdr部のS式
 
     final public boolean isPair(){ return true; }
 
-    Pair(S s1, S s2){
+    Pair(SExpr s1, SExpr s2){
         this.s1 = s1;
         this.s2 = s2;
     }
 
-    public S car(){
+    public SExpr car(){
         return s1;
     }
 
-    public S cdr(){
+    public SExpr cdr(){
         return s2;
     }
 
@@ -50,7 +50,7 @@ class Pair extends S {
     }
 
 
-    final public boolean equals(S s){ 
+    final public boolean equals(SExpr s){ 
         if (s.isPair()){
             Pair p = (Pair)s;
             return s1.equals(p.s1) && s2.equals(p.s2);

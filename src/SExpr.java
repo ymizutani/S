@@ -2,7 +2,7 @@
 /**
   S式クラス
 */
-abstract class S {
+abstract class SExpr {
 
     //// 種別判定系メソッド ////////////////////////////////
 
@@ -67,7 +67,7 @@ abstract class S {
     final public boolean isNotNil(){ return !isNil(); }
 
     //// 等価判定系メソッド ////////////////////////////////
-    abstract public boolean equals(S s);
+    abstract public boolean equals(SExpr s);
 
 
     //// データ取得 /////////////////////////////////////////////////
@@ -109,17 +109,17 @@ abstract class S {
     //// ドット対関連 /////////////////////////////////////////////////
 
     /** 引数とのドット対を返す． */
-    public S cons(S s){
+    public SExpr cons(SExpr s){
         return new Pair(this, s);
     }
 
     /** car部を返す． */
-    public S car(){
+    public SExpr car(){
         throw new RuntimeException();
     }
 
     /** cdr部を返す． */
-    public S cdr(){
+    public SExpr cdr(){
         throw new RuntimeException();
     }
 
@@ -127,44 +127,39 @@ abstract class S {
     //////////// S式を生成する静的メソッド ////////////////////////////
 
     /** nilを表すインスタンス */
-    static private S nil_instance = new NilAtom();
+    static private SExpr nil_instance = new NilAtom();
 
     /** nilを参照する */
-    static public S nil(){ return nil_instance; }
+    static public SExpr nil(){ return nil_instance; }
 
 
     /** ブールアトムのインスタンス */
-    static private S t_instance = new BoolAtom(true);
-    static private S f_instance = new BoolAtom(false);
+    static private SExpr t_instance = new BoolAtom(true);
+    static private SExpr f_instance = new BoolAtom(false);
 
     /** trueを参照する */
-    static public S t(){ return t_instance; }
+    static public SExpr t(){ return t_instance; }
 
     /** falseを参照する */
-    static public S f(){ return f_instance; }
+    static public SExpr f(){ return f_instance; }
 
     /** 整数アトムを生成する */
-    static public S atom(int i){
+    static public SExpr atom(int i){
         return new IntAtom(i);
     }
     
     /** 実数アトムを生成する */
-    static public S atom(double d){
+    static public SExpr atom(double d){
         return new DoubleAtom(d);
     }
     
     /** 文字列アトムを生成する */
-    static public S atom(String s){
+    static public SExpr atom(String s){
         return new StringAtom(s);
     }
 
-    /** nilアトムを生成する */
-    static public S atom(){
-        return nil();
-    }
-
     /** ブールアトムを生成する */
-    static public S atom(boolean b){
+    static public SExpr atom(boolean b){
         return b ? t() : f();
     }
 

@@ -6,7 +6,7 @@ class NilAtom extends Atom {
 
     final public boolean isNil(){ return true; }
 
-    final public boolean equals(S s){ 
+    final public boolean equals(SExpr s){ 
         return s.isNil();
     }
 
